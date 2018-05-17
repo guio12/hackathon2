@@ -1,21 +1,28 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('../css/teamAdmin.css') }}">
+{% endblock %}
+
 {% block body %}
-    <h1>Playedmap</h1>
+<div class="bodyAdminTeam">
+
+<h1 class="titreTeamAdmin">Playedmap</h1>
 
     <table>
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ playedMap.id }}</td>
+                <th><div class="flagTitle">Id</div></th>
+                <td><div class="flag">{{ playedMap.id }}</div></td>
             </tr>
             <tr>
-                <th>Score1</th>
-                <td>{{ playedMap.score1 }}</td>
+                <th><div class="flagTitle">Score1</div></th>
+                <td><div class="flag">{{ playedMap.score1 }}</div></td>
             </tr>
             <tr>
-                <th>Score2</th>
-                <td>{{ playedMap.score2 }}</td>
+                <th><div class="flagTitle">Score2</div></th>
+                <td><div class="flag">{{ playedMap.score2 }}</div></td>
             </tr>
         </tbody>
     </table>
@@ -33,4 +40,6 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
-{% endblock %}
+    <div class="bodyAdminTeam">
+
+    {% endblock %}

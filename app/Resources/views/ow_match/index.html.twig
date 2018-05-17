@@ -1,28 +1,36 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('../css/teamAdmin.css') }}">
+{% endblock %}
+
+
 {% block body %}
-    <h1>Ow_matches list</h1>
+<div class="bodyAdminTeam">
+    <h1 class="titreTeamAdmin">Ow_matches list</h1>
 
     <table>
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Round</th>
-                <th>Matchnum</th>
-                <th>Score1</th>
-                <th>Score2</th>
-                <th>Actions</th>
+            <tr class="headTeamAdmin">
+                <th><div class="flagTitle">Id</div></th>
+                <th><div class="flagTitle">Round</div></th>
+                <th><div class="flagTitle">Matchnum</div></th>
+                <th><div class="flagTitle">Score1</div></th>
+                <th><div class="flagTitle">Score2</div></th>
+                <th><div class="flagTitle">Actions</div></th>
             </tr>
         </thead>
-        <tbody>
+        <div><div class="divtbody">
         {% for oW_Match in oW_Matches %}
             <tr>
-                <td><a href="{{ path('ow_match_show', { 'id': oW_Match.id }) }}">{{ oW_Match.id }}</a></td>
-                <td>{{ oW_Match.round }}</td>
-                <td>{{ oW_Match.matchNum }}</td>
-                <td>{{ oW_Match.score1 }}</td>
-                <td>{{ oW_Match.score2 }}</td>
+                <td><div class="flag"><a href="{{ path('ow_match_show', { 'id': oW_Match.id }) }}">{{ oW_Match.id }}</a></div></td>
+                <td><div class="flag">{{ oW_Match.round }}</div></td>
+                <td><div class="flag">{{ oW_Match.matchNum }}</div></td>
+                <td><div class="flag">{{ oW_Match.score1 }}</div></td>
+                <td><div class="flag">{{ oW_Match.score2 }}</div></td>
                 <td>
+                    <div class="flag">
                     <ul>
                         <li>
                             <a href="{{ path('ow_match_show', { 'id': oW_Match.id }) }}">show</a>
@@ -31,9 +39,11 @@
                             <a href="{{ path('ow_match_edit', { 'id': oW_Match.id }) }}">edit</a>
                         </li>
                     </ul>
+                    </div>
                 </td>
             </tr>
         {% endfor %}
+        </div>
         </tbody>
     </table>
 
@@ -42,4 +52,5 @@
             <a href="{{ path('ow_match_new') }}">Create a new oW_Match</a>
         </li>
     </ul>
+</div>
 {% endblock %}
