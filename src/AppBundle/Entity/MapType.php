@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class MapType
 {
+    public function __toString()
+    {
+        return $this->type;
+    }
+
     /**
      * @var int
      *
