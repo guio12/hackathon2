@@ -262,4 +262,9 @@ class OW_Match
     {
         return $this->playedMaps;
     }
+
+    public function __toString()
+    {
+        return "Round " . $this->round . ", Match " .$this->matchNum;
+    }
 }
