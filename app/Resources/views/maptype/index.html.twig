@@ -1,14 +1,20 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('../css/teamAdmin.css') }}">
+{% endblock %}
+
 {% block body %}
-    <h1>Maptypes list</h1>
+<div class="bodyAdminTeam">
+    <h1 class="titreTeamAdmin">Maptypes list</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Type</th>
-                <th>Actions</th>
+                <th><div class="flagTitle">Id</div></th>
+                <th><div class="flagTitle">Type</div></th>
+                <th><div class="flagTitle">Actions</div></th>
             </tr>
         </thead>
         <tbody>
@@ -36,4 +42,5 @@
             <a href="{{ path('maptype_new') }}">Create a new mapType</a>
         </li>
     </ul>
+</div>
 {% endblock %}
