@@ -10,4 +10,5 @@ namespace AppBundle\Repository;
  */
 class OW_MatchRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

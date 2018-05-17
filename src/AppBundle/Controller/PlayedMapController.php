@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\OW_Match;
 use AppBundle\Entity\PlayedMap;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -18,16 +19,27 @@ class PlayedMapController extends Controller
      * Lists all playedMap entities.
      *
      * @Route("/", name="playedmap_index")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
     public function indexAction()
     {
+
         $em = $this->getDoctrine()->getManager();
 
-        $playedMaps = $em->getRepository('AppBundle:PlayedMap')->findAll();
+        //selection du match
+        $select="";
+        $matchs = $em->getRepository('AppBundle:OW_Match')->findAll();
 
-        return $this->render('playedmap/index.html.twig', array(
-            'playedMaps' => $playedMaps,
+        if (isset($_POST['match'])){
+            $select=$_POST['match'];
+        }
+
+
+
+        $playedMaps = $em->getRepository('AppBundle:PlayedMap')->findBy(['owMatch'=>$select]);
+
+        return $this->render('playedmap/index.html.twig', array( 'matchs'=>$matchs,
+            'playedMaps' => $playedMaps, 'select'=>$select
         ));
     }
 
@@ -46,9 +58,34 @@ class PlayedMapController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($playedMap);
-            $em->flush();
 
-            return $this->redirectToRoute('playedmap_show', array('id' => $playedMap->getId()));
+            $match = $em->getRepository('AppBundle:OW_Match')->findOneBy(['id'=>$playedMap->getOwMatch()]);
+            if ($playedMap->getScore1()>$playedMap->getScore2()){
+                $match->setScore1($match->getScore1() + 1);
+                $em->persist($match);
+
+            }
+            else {
+                $match->setScore2($match->getScore2() + 1);
+                $em->persist($match);
+            }
+            if ($match->getScore1()==3){
+                $nextRound = $match->getRound()+1;
+                $nextMatchNum = intval(ceil($match->getMatchNum()/2));
+                $nextMatch = $em->getRepository('AppBundle:OW_Match')->findOneBy(['round'=>$nextRound,'matchNum'=>$nextMatchNum]);
+                $nextMatch->setTeam1($match->getTeam1());
+                $em->persist($nextMatch);
+            }
+            elseif ($match->getScore2()==3){
+                $nextRound = $match->getRound()+1;
+                $nextMatchNum = intval(ceil($match->getMatchNum()/2));
+                $nextMatch = $em->getRepository('AppBundle:OW_Match')->findOneBy(['round'=>$nextRound,'matchNum'=>$nextMatchNum]);
+                $nextMatch->setTeam2($match->getTeam2());
+                $em->persist($nextMatch);
+            }
+
+            $em->flush();
+            return $this->redirectToRoute('playedmap_index', array('id' => $playedMap->getowMatch()));
         }
 
         return $this->render('playedmap/new.html.twig', array(

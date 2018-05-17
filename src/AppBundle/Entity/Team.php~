@@ -12,11 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Team
 {
+<<<<<<< HEAD
     public function __toString()
     {
         return $this->nationality;
     }
 
+=======
+>>>>>>> PageAdminResMatch
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Player", mappedBy="team")
      */
