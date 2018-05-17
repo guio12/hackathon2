@@ -17,7 +17,7 @@
             <tr>
                 <td><a href="{{ path('player_show', { 'id': player.id }) }}">{{ player.id }}</a></td>
                 <td>{{ player.pseudo }}</td>
-                <td>{{ player.photoUrl }}</td>
+                <td><img src="{{ player.photoUrl }}" style="max-width:100px", height="auto"></td>
                 <td>
                     <ul>
                         <li>
