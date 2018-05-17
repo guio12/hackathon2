@@ -221,4 +221,9 @@ class OW_Match
     {
         return $this->score2;
     }
+
+    public function __toString()
+    {
+        return "Round " . $this->round . ", Match " .$this->matchNum;
+    }
 }
