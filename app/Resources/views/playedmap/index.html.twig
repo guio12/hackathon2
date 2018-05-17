@@ -13,23 +13,33 @@
             </tr>
         </thead>
         <tbody>
-        {% for playedMap in playedMaps %}
-            <tr>
-                <td><a href="{{ path('playedmap_show', { 'id': playedMap.id }) }}">{{ playedMap.id }}</a></td>
-                <td>{{ playedMap.score1 }}</td>
-                <td>{{ playedMap.score2 }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('playedmap_show', { 'id': playedMap.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('playedmap_edit', { 'id': playedMap.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
+        <form class="form-control" method="post" action="">
+            <select name="match" class="custom-select"  onchange="this.form.submit()">
+                <option value="" {% if select=="" %}selected{% endif %}></option>
+                {% for match in matchs %}
+                    <option value="{{ match.id }}" {% if select==match.id %}selected{% endif %}>{{ match }}</option>
+                {% endfor %}
+            </select>
+        </form>
+        {% if select!="" %}
+            {% for playedMap in playedMaps %}
+                <tr>
+                    <td><a href="{{ path('playedmap_show', { 'id': playedMap.id }) }}">{{ playedMap.id }}</a></td>
+                    <td>{{ playedMap.score1 }}</td>
+                    <td>{{ playedMap.score2 }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('playedmap_show', { 'id': playedMap.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('playedmap_edit', { 'id': playedMap.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
         </tbody>
     </table>
 
