@@ -15,9 +15,9 @@
         <tbody>
         {% for team in teams %}
             <tr>
-                <td><a href="{{ path('team_show', { 'id': team.id }) }}">{{ team.id }}</a></td>
-                <td>{{ team.nationality }}</td>
-                <td>{{ team.flagUrl }}</td>
+                <td class="indexTeamAdminTd"><a href="{{ path('team_show', { 'id': team.id }) }}">{{ team.id }}</a></td>
+                <td class="indexTeamAdminTd">{{ team.nationality }}</td>
+                <td class="indexTeamAdminTd"><img src="{{ team.flagUrl }}" style="width:200px"></td>
                 <td>
                     <ul>
                         <li>
