@@ -1,12 +1,37 @@
 body {
     margin: 0;
     font-family: 'Orbitron', sans-serif;
-    font-size: 28px;
+    background-color: #17202a;
+    color: #b3b6b7;
 }
+
 
 h1 {
     font-size: 22px;
-    /*color: whitesmoke;*/
+    color:   #1c2833 ;
+}
+
+h2 {
+    font-size: 21px;
+}
+
+p {
+    text-align: justify;
+    font-size: 18px;
+}
+
+.content li{
+    font-size: 18px;
+}
+
+.footer {
+    background-color:  #111010;
+    padding: 5px;
+}
+
+.footer p {
+    text-align: center;
+    font-size: 12px;
 }
 
 /* ----------HEADER-------------- */
@@ -34,6 +59,7 @@ h1 {
 }
 
 #navbar {
+    z-index: 10;
 }
 
 .content {
@@ -50,4 +76,20 @@ h1 {
     padding-top: 60px;
 }
 
+/* ----------ACCUEIL-------------- */
 
+.intro{
+    border: 2px solid #FFC300;
+    padding: 25px;
+    border-radius: 8px;
+    background-color:  #111010;
+    z-index: 1;
+}
+
+.intro p{
+    text-align: center;
+}
+
+.intro span{
+    color: #FFC300;
+}
