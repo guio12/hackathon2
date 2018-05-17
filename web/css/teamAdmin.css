@@ -1,5 +1,30 @@
-h1
+.titreTeamAdmin
 {
     color: #5eb5e0;
+    font-size: 2em;
 }
 
+.flag
+{
+    margin-bottom: 2em;
+}
+
+.headTeamAdmin
+{
+    font-size: 1.6em;
+}
+
+.flagTitle
+{
+    margin-right: 2.5em;
+}
+
+.divtbody
+{
+    margin-top: 2em;
+}
+
+.bodyAdminTeam
+{
+    margin-left: 5em;
+}
