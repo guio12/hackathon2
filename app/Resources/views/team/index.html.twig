@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('../css/teamAdmin.css') }}">
+{% endblock %}
+
 {% block body %}
     <h1>Teams list</h1>
 
@@ -17,7 +22,7 @@
             <tr>
                 <td><a href="{{ path('team_show', { 'id': team.id }) }}">{{ team.id }}</a></td>
                 <td>{{ team.nationality }}</td>
-                <td>{{ team.flagUrl }}</td>
+                <td><img src="{{ team.flagUrl }}" style="max-width:200px", height="auto"></td>
                 <td>
                     <ul>
                         <li>
