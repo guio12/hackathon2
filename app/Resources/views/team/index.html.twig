@@ -6,35 +6,40 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Teams list</h1>
+    <div class="bodyAdminTeam">
+    <h1 class="titreTeamAdmin">Teams list</h1>
 
     <table>
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nationality</th>
-                <th>Flagurl</th>
-                <th>Actions</th>
+            <tr class="headTeamAdmin">
+                <th><div class="flagTitle"> Id</div></th>
+                <th><div class="flagTitle">Nationality</div></th>
+                <th><div class="flagTitle">Flagurl</div></th>
+                <th><div class="flagTitle">Actions</div></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody><div class="divtbody">
         {% for team in teams %}
             <tr>
-                <td><a href="{{ path('team_show', { 'id': team.id }) }}">{{ team.id }}</a></td>
-                <td>{{ team.nationality }}</td>
-                <td><img src="{{ team.flagUrl }}" style="max-width:200px", height="auto"></td>
+
+                <td><div class="flag"><a href="{{ path('team_show', { 'id': team.id }) }}">{{ team.id }}</a></div></td>
+                <td><div class="flag">{{ team.nationality }}</div></td>
+                <td><div class="flagTitle"><div class="flag"><img src="{{ team.flagUrl }}" style="max-width:200px", height="auto"></div></div></td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('team_show', { 'id': team.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('team_edit', { 'id': team.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <div class="flag">
+                        <ul>
+                            <li>
+                                <a href="{{ path('team_show', { 'id': team.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('team_edit', { 'id': team.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </div>
                 </td>
             </tr>
         {% endfor %}
+        </div>
         </tbody>
     </table>
 
@@ -43,4 +48,5 @@
             <a href="{{ path('team_new') }}">Create a new team</a>
         </li>
     </ul>
+    </div>
 {% endblock %}
