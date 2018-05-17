@@ -221,11 +221,6 @@ class OW_Match
     {
         return $this->score2;
     }
-
-    public function __toString()
-    {
-        return "Round " . $this->round . ", Match " .$this->matchNum;
-    }
     /**
      * Constructor
      */
@@ -235,7 +230,7 @@ class OW_Match
     }
 
     /**
-     * Add playedMap.
+     * Add playedMap
      *
      * @param \AppBundle\Entity\PlayedMap $playedMap
      *
@@ -249,19 +244,17 @@ class OW_Match
     }
 
     /**
-     * Remove playedMap.
+     * Remove playedMap
      *
      * @param \AppBundle\Entity\PlayedMap $playedMap
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
     public function removePlayedMap(\AppBundle\Entity\PlayedMap $playedMap)
     {
-        return $this->playedMaps->removeElement($playedMap);
+        $this->playedMaps->removeElement($playedMap);
     }
 
     /**
-     * Get playedMaps.
+     * Get playedMaps
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -269,4 +262,10 @@ class OW_Match
     {
         return $this->playedMaps;
     }
+
+    public function __toString()
+    {
+        return "Round " . $this->round . ", Match " .$this->matchNum;
+    }
+
 }

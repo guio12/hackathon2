@@ -156,7 +156,11 @@ class Player
     }
 
     /**
+<<<<<<< HEAD
      * Set team.
+=======
+     * Set team
+>>>>>>> PageAdminResMatch
      *
      * @param \AppBundle\Entity\Team $team
      *

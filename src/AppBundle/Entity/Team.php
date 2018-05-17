@@ -112,7 +112,7 @@ class Team
     }
 
     /**
-     * Add player.
+     * Add player
      *
      * @param \AppBundle\Entity\Player $player
      *
@@ -125,20 +125,17 @@ class Team
         return $this;
     }
 
-    /**
-     * Remove player.
+    /** player
      *
      * @param \AppBundle\Entity\Player $player
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
     public function removePlayer(\AppBundle\Entity\Player $player)
     {
-        return $this->players->removeElement($player);
+        $this->players->removeElement($player);
     }
 
     /**
-     * Get players.
+     * Get players
      *
      * @return \Doctrine\Common\Collections\Collection
      */
