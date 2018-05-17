@@ -2,6 +2,10 @@
     text-align: center;
 }
 
+.content h3{
+    color: #FFC300;
+}
+
 .BracketSystem {
 
     padding: 0;
@@ -252,6 +256,13 @@
 
 }
 
+.Bracket-group {
+    padding: 10px;
+    border: solid 2px #FFC300;
+    border-radius: 8px;
+    background-color:  #212f3d;
+}
+
 
 /*      Paramètres version DESKTOP     */
 @media only screen and (min-width: 991px)
@@ -259,6 +270,14 @@
     .BracketSystem {
         display: flex;
         align-items: center;
+    }
+
+    .Bracket-round-2 .one{
+        margin-bottom: 25vh;
+    }
+
+    .Bracket-round-2 .two{
+        margin-top: 25vh;
     }
 }
 
