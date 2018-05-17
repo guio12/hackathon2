@@ -36,7 +36,7 @@ class Team
     /**
      * @var string
      *
-     * @ORM\Column(name="flag_url", type="string", length=128)
+     * @ORM\Column(name="flag_url", type="string", length=255)
      */
     private $flagUrl;
 
