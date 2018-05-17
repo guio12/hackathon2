@@ -13,7 +13,7 @@ class PlayerType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('pseudo')->add('photoUrl')->add('role');
+        $builder->add('pseudo')->add('photoUrl')->add('role')->add('team');
     }/**
      * {@inheritdoc}
      */

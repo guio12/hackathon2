@@ -42,7 +42,7 @@ class PlayedMap
     private $score2;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\OW_Match")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\OW_Match", inversedBy="playedMaps")
      * @ORM\JoinColumn(nullable=false)
      */
     private $owMatch;

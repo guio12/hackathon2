@@ -28,6 +28,11 @@ class Player
      */
     private $role;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team", inversedBy="players")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $team;
 
     /**
      * @var string

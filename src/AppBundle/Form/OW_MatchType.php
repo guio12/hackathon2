@@ -13,7 +13,7 @@ class OW_MatchType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('round')->add('matchNum')->add('team1')->add('team2')->add('score1')->add('score2');
+        $builder->add('round')->add('matchNum')->add('score1')->add('score2')->add('team1')->add('team2');
     }/**
      * {@inheritdoc}
      */

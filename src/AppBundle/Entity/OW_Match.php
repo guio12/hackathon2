@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class OW_Match
 {
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\PlayedMap", mappedBy="owMatch")
+     */
+    private $playedMaps;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -36,17 +41,15 @@ class OW_Match
     private $matchNum;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="team1", type="string", length=128)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team")
+     * @ORM\JoinColumn(nullable=false)
      */
     
     private $team1;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="team2", type="string", length=128)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $team2;
 

@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Team
 {
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Player", mappedBy="team")
+     */
+    private $players;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
