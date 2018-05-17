@@ -1,0 +1,205 @@
+.BracketSystem {
+
+    padding: 0;
+    width: auto;
+    left: auto;
+    right: auto;
+    margin-left: auto;
+    margin-right: auto;
+    background: none;
+    position: relative;
+    overflow: visible;
+    max-width: 2560px;
+    backface-visibility: hidden;
+    box-sizing: inherit;
+}
+
+
+.Bracket-column {
+
+    padding: 0 6px;
+    min-height: 711px;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    box-sizing: border-box;
+    font-family: ConcourseT4, Century Gothic, Arial, sans-serif;
+    color: #333;
+    font-size: 18px;
+    line-height: 1.2;
+    -webkit-box-pack: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+}
+.Bracket-column .Bracket-round-2 {
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    z-index: 3;
+    backface-visibility: hidden;
+}
+
+.Bracket-group {
+    margin: 10px 0;
+    min-height: 225px;
+    height: 100%;
+    justify-content: flex-start;
+    transition: none;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    box-sizing: border-box;
+    font-family: ConcourseT4,Century Gothic,Arial,sans-serif;
+    color: #333;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.Bracket-match {
+
+    width: 100%;
+    margin: 0 auto;
+    transition: none;
+    position: relative;
+    box-sizing: border-box;
+    font-family: ConcourseT4,Century Gothic,Arial,sans-serif;
+    color: #333;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.BracketMatch-summary {
+    display: flex;
+    box-sizing: border-box;
+    font-family: ConcourseT4,Century Gothic,Arial,sans-serif;
+    color: #333;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.BracketMatch-units {
+
+    width: 91.04%;
+    box-sizing: inherit;
+    font-family: ConcourseT4,Century Gothic,Arial,sans-serif;
+    color: #333;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.BracketUnit {
+
+    height: 36px;
+    position: relative;
+    background: linear-gradient(180deg,#74777a 0,#535f77 68%,#4d596c);
+    border: 1px solid #919599;
+    padding: 0 0 0 16px;
+    margin-bottom: 1px;
+    margin-right: 1px;
+    display: flex;
+    align-items: center;
+    box-sizing: inherit;
+    font-family: ConcourseT4,Century Gothic,Arial,sans-serif;
+    color: #333;
+    font-size: 18px;
+    line-height: 1.2;
+
+}
+
+.BracketUnit-flag {
+
+    width: 32px;
+    height: 25px;
+    flex: 0 0 auto;
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    box-sizing: inherit;
+
+}
+
+.BracketUnit-clickable {
+
+    max-width: 68%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    box-sizing: inherit;
+}
+
+.BracketUnit-country {
+
+    font-size: 1.11111rem;
+    display: block;
+    text-align: left;
+    width: auto;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    color: #fff;
+    margin: 0 10px;
+    min-width: 26px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: .2s ease-out;
+    box-sizing: inherit;
+
+}
+
+.BracketUnit-info {
+
+    height: 18px;
+    width: 18px;
+    cursor: pointer;
+    flex: 0 0 auto;
+    box-sizing: inherit;
+}
+.BracketUnit-score {
+
+    width: 32px;
+    font-size: 1.11111rem;
+    background: #c3ccd5;
+    border-radius: 1px;
+    margin-left: auto;
+    height: 100%;
+    position: relative;
+    flex-shrink: 0;
+    box-sizing: inherit;
+
+}
+
+.BracketUnit-score.is-winning {
+
+    background: #fff;
+    font-weight: 700;
+
+}
+
+.BracketMatch-play {
+
+    width: 36px;
+    display: flex;
+    position: relative;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    background: #00a5e2;
+    margin-bottom: 1px;
+    cursor: pointer;
+    box-sizing: inherit;
+
+}
+
+.BracketMatch-playIcon {
+
+    width: 15px;
+    height: 15px;
+    box-sizing: inherit;
+    cursor: pointer;
+
+}
+
