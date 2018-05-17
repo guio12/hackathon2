@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Maptypes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mapType in mapTypes %}
+            <tr>
+                <td><a href="{{ path('maptype_show', { 'id': mapType.id }) }}">{{ mapType.id }}</a></td>
+                <td>{{ mapType.type }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('maptype_show', { 'id': mapType.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('maptype_edit', { 'id': mapType.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('maptype_new') }}">Create a new mapType</a>
+        </li>
+    </ul>
+{% endblock %}

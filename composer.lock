@@ -1707,7 +1707,11 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
+            "time": "2018-04-26T10:06:28+00:00"
+=======
             "time": "2018-04-26 10:06:28"
+>>>>>>> master
         },
         {
             "name": "symfony/polyfill-intl-icu",
@@ -1765,7 +1769,11 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
+            "time": "2018-04-25T14:53:50+00:00"
+=======
             "time": "2018-04-25 14:53:50"
+>>>>>>> master
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1824,7 +1832,11 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
+            "time": "2018-04-26T10:06:28+00:00"
+=======
             "time": "2018-04-26 10:06:28"
+>>>>>>> master
         },
         {
             "name": "symfony/polyfill-php56",
@@ -1880,7 +1892,11 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
+            "time": "2018-04-26T10:06:28+00:00"
+=======
             "time": "2018-04-26 10:06:28"
+>>>>>>> master
         },
         {
             "name": "symfony/polyfill-php70",
@@ -1939,7 +1955,11 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
+            "time": "2018-04-26T10:06:28+00:00"
+=======
             "time": "2018-04-26 10:06:28"
+>>>>>>> master
         },
         {
             "name": "symfony/polyfill-util",
@@ -1991,7 +2011,11 @@
                 "polyfill",
                 "shim"
             ],
+<<<<<<< HEAD
+            "time": "2018-04-26T10:06:28+00:00"
+=======
             "time": "2018-04-26 10:06:28"
+>>>>>>> master
         },
         {
             "name": "symfony/swiftmailer-bundle",
@@ -2270,7 +2294,11 @@
             "keywords": [
                 "templating"
             ],
+<<<<<<< HEAD
+            "time": "2018-04-02T09:24:19+00:00"
+=======
             "time": "2018-04-02 09:24:19"
+>>>>>>> master
         }
     ],
     "packages-dev": [
@@ -2392,7 +2420,11 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
+            "time": "2018-04-30T15:36:51+00:00"
+=======
             "time": "2018-04-30 15:36:51"
+>>>>>>> master
         }
     ],
     "aliases": [],
