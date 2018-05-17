@@ -1,24 +1,31 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('../css/teamAdmin.css') }}">
+{% endblock %}
+
 {% block body %}
-    <h1>Players list</h1>
+<div class="bodyAdminTeam">
+    <h1 class="titreTeamAdmin">Players list</h1>
 
     <table>
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Pseudo</th>
-                <th>Photourl</th>
-                <th>Actions</th>
+        <tr class="headTeamAdmin">
+            <th><div class="flagTitle">Id</div></th>
+            <th><div class="flagTitle">Pseudo</div></th>
+            <th><div class="flagTitle">Photourl</div></th>
+            <th><div class="flagTitle">Actions</div></th>
             </tr>
         </thead>
         <tbody>
         {% for player in players %}
             <tr>
-                <td><a href="{{ path('player_show', { 'id': player.id }) }}">{{ player.id }}</a></td>
-                <td>{{ player.pseudo }}</td>
-                <td><img src="{{ player.photoUrl }}" style="max-width:100px", height="auto"></td>
+                <td><div class="flag"><a href="{{ path('player_show', { 'id': player.id }) }}">{{ player.id }}</a></div></td>
+                <td><div class="flag">{{ player.pseudo }}</div></td>
+                <td><div class="flagTitle"><img src="{{ player.photoUrl }}" style="max-width:100px", height="auto"></div></td>
                 <td>
+                    <div class="flag">
                     <ul>
                         <li>
                             <a href="{{ path('player_show', { 'id': player.id }) }}">show</a>

@@ -226,47 +226,4 @@ class OW_Match
     {
         return "Round " . $this->round . ", Match " .$this->matchNum;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->playedMaps = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add playedMap.
-     *
-     * @param \AppBundle\Entity\PlayedMap $playedMap
-     *
-     * @return OW_Match
-     */
-    public function addPlayedMap(\AppBundle\Entity\PlayedMap $playedMap)
-    {
-        $this->playedMaps[] = $playedMap;
-
-        return $this;
-    }
-
-    /**
-     * Remove playedMap.
-     *
-     * @param \AppBundle\Entity\PlayedMap $playedMap
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
-     */
-    public function removePlayedMap(\AppBundle\Entity\PlayedMap $playedMap)
-    {
-        return $this->playedMaps->removeElement($playedMap);
-    }
-
-    /**
-     * Get playedMaps.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPlayedMaps()
-    {
-        return $this->playedMaps;
-    }
 }
