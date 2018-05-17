@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Playedmaps list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Score1</th>
+                <th>Score2</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for playedMap in playedMaps %}
+            <tr>
+                <td><a href="{{ path('playedmap_show', { 'id': playedMap.id }) }}">{{ playedMap.id }}</a></td>
+                <td>{{ playedMap.score1 }}</td>
+                <td>{{ playedMap.score2 }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('playedmap_show', { 'id': playedMap.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('playedmap_edit', { 'id': playedMap.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('playedmap_new') }}">Create a new playedMap</a>
+        </li>
+    </ul>
+{% endblock %}

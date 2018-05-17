@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Playedmap</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ playedMap.id }}</td>
+            </tr>
+            <tr>
+                <th>Score1</th>
+                <td>{{ playedMap.score1 }}</td>
+            </tr>
+            <tr>
+                <th>Score2</th>
+                <td>{{ playedMap.score2 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('playedmap_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('playedmap_edit', { 'id': playedMap.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
