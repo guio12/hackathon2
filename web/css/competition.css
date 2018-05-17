@@ -1,3 +1,7 @@
+.content {
+    text-align: center;
+}
+
 .BracketSystem {
 
     padding: 0;
@@ -7,7 +11,6 @@
     margin-left: auto;
     margin-right: auto;
     background: none;
-    position: relative;
     overflow: visible;
     max-width: 2560px;
     backface-visibility: hidden;
@@ -26,8 +29,6 @@
     position: relative;
     z-index: 2;
     box-sizing: border-box;
-    font-family: ConcourseT4, Century Gothic, Arial, sans-serif;
-    color: #333;
     font-size: 18px;
     line-height: 1.2;
     -webkit-box-pack: center;
@@ -51,8 +52,6 @@
     position: relative;
     flex-direction: column;
     box-sizing: border-box;
-    font-family: ConcourseT4,Century Gothic,Arial,sans-serif;
-    color: #333;
     font-size: 18px;
     line-height: 1.2;
 }
@@ -64,27 +63,21 @@
     transition: none;
     position: relative;
     box-sizing: border-box;
-    font-family: ConcourseT4,Century Gothic,Arial,sans-serif;
-    color: #333;
     font-size: 18px;
     line-height: 1.2;
 }
 
-.BracketMatch-summary {
+.Bracket-summary {
     display: flex;
     box-sizing: border-box;
-    font-family: ConcourseT4,Century Gothic,Arial,sans-serif;
-    color: #333;
     font-size: 18px;
     line-height: 1.2;
 }
 
-.BracketMatch-units {
+.BracketMatch-unit {
 
-    width: 91.04%;
+    width: 100%;
     box-sizing: inherit;
-    font-family: ConcourseT4,Century Gothic,Arial,sans-serif;
-    color: #333;
     font-size: 18px;
     line-height: 1.2;
 }
@@ -101,7 +94,6 @@
     display: flex;
     align-items: center;
     box-sizing: inherit;
-    font-family: ConcourseT4,Century Gothic,Arial,sans-serif;
     color: #333;
     font-size: 18px;
     line-height: 1.2;
@@ -121,8 +113,6 @@
 }
 
 .BracketUnit-clickable {
-
-    max-width: 68%;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -158,7 +148,6 @@
     box-sizing: inherit;
 }
 .BracketUnit-score {
-
     width: 32px;
     font-size: 1.11111rem;
     background: #c3ccd5;
@@ -168,7 +157,8 @@
     position: relative;
     flex-shrink: 0;
     box-sizing: inherit;
-
+    text-align: center;
+    line-height: 40px;
 }
 
 .BracketUnit-score.is-winning {
@@ -200,6 +190,75 @@
     height: 15px;
     box-sizing: inherit;
     cursor: pointer;
+}
 
+.Bracket-details {
+    position: relative;
+}
+
+.BracketMatch-detailsTrigger {
+    background: #00a5e2;
+    color: #fff;
+    font-size: 1.37167rem;
+    box-shadow: inset 0 0 6px 1px rgba(147,226,255,.3);
+    display: flex;
+    position: relative;
+    border-radius: 2px;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 3px 0;
+    margin-bottom: 1px;
+    transition: .2s ease-out;
+    cursor: pointer;
+}
+
+.BracketMatchReport {
+    margin-bottom: 35px;
+    padding: 5px 2px 2px;
+    max-height: 362px;
+    border: 1px solid #fff;
+    background: #b5bcc9;
+    pointer-events: auto;
+    border-radius: 2px;
+    transition: max-height .25s ease-in-out .1s,background .25s ease-in-out .1s,border .25s ease-in-out .1s,padding .25s ease-in-out .1s;
+    transition-property: max-height, background, border, padding;
+    transition-duration: 0.25s, 0.25s, 0.25s, 0.25s;
+    transition-timing-function: ease-in-out, ease-in-out, ease-in-out, ease-in-out;
+    transition-delay: 0.1s, 0.1s, 0.1s, 0.1s;
+    overflow: hidden;
+    will-change: transform;
+    z-index: 1;
+    box-sizing: inherit;
+}
+
+.BracketMatchResult {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    background: #3d424d;
+    padding: 1px;
+    margin-bottom: 2px;
+    box-sizing: inherit;
+}
+
+.Bracket-arrow {
+
+}
+
+
+/*      Paramètres version DESKTOP     */
+@media only screen and (min-width: 991px)
+{
+    .BracketSystem {
+        display: flex;
+        align-items: center;
+    }
 }
 
