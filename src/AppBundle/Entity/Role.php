@@ -12,6 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Role
 {
+    public function __toString()
+    {
+        return $this->role;
+    }
     /**
      * @var int
      *

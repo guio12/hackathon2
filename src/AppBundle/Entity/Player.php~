@@ -28,6 +28,11 @@ class Player
      */
     private $role;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team", inversedBy="players")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $team;
 
     /**
      * @var string
@@ -124,5 +129,29 @@ class Player
     public function getRoleId()
     {
         return $this->role_id;
+    }
+
+    /**
+     * Set role
+     *
+     * @param \AppBundle\Entity\Role $role
+     *
+     * @return Player
+     */
+    public function setRole(\AppBundle\Entity\Role $role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return \AppBundle\Entity\Role
+     */
+    public function getRole()
+    {
+        return $this->role;
     }
 }

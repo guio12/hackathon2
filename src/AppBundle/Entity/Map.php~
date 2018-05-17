@@ -92,4 +92,9 @@ class Map
     {
         return $this->type;
     }
+
+    public function __toString()
+    {
+        return ucwords($this->name);
+    }
 }
