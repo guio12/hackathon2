@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ow_matches list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Round</th>
+                <th>Matchnum</th>
+                <th>Team1</th>
+                <th>Team2</th>
+                <th>Score1</th>
+                <th>Score2</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for oW_Match in oW_Matches %}
+            <tr>
+                <td><a href="{{ path('ow_match_show', { 'id': oW_Match.id }) }}">{{ oW_Match.id }}</a></td>
+                <td>{{ oW_Match.round }}</td>
+                <td>{{ oW_Match.matchNum }}</td>
+                <td>{{ oW_Match.team1 }}</td>
+                <td>{{ oW_Match.team2 }}</td>
+                <td>{{ oW_Match.score1 }}</td>
+                <td>{{ oW_Match.score2 }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('ow_match_show', { 'id': oW_Match.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('ow_match_edit', { 'id': oW_Match.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ow_match_new') }}">Create a new oW_Match</a>
+        </li>
+    </ul>
+{% endblock %}
