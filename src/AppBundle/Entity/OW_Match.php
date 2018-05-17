@@ -42,14 +42,14 @@ class OW_Match
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     
     private $team1;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $team2;
 
