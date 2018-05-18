@@ -31,7 +31,7 @@
         {% if select!="" %}
             {% for playedMap in playedMaps %}
                 <tr>
-                    <td><a href="{{ path('playedmap_show', { 'id': playedMap.id }) }}">{{ playedMap.id }}</a></td>
+                    <td>{{ playedMap.map }}</td>
                     <td>{{ playedMap.score1 }}</td>
                     <td>{{ playedMap.score2 }}</td>
                     <td>
