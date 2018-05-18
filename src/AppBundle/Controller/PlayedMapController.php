@@ -128,26 +128,33 @@ class PlayedMapController extends Controller
      */
     public function editAction(Request $request, PlayedMap $playedMap)
     {
+
+        $oldPlayedMap = clone $playedMap;
+
         $deleteForm = $this->createDeleteForm($playedMap);
         $editForm = $this->createForm('AppBundle\Form\PlayedMapType', $playedMap);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
 
-            $oldPlayedMap = $em->getRepository('AppBundle:PlayedMap')->findOneBy(['id'=>$playedMap->getId()]);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($playedMap);
+
             $match = $em->getRepository('AppBundle:OW_Match')->findOneBy(['id'=>$playedMap->getOwMatch()]);
-            if (($oldPlayedMap->getScore1()>$oldPlayedMap->getScore2())&&($playedMap->getScore1()<$playedMap->getScore2())){
+
+
+
+            if (($oldPlayedMap->getScore1()>$oldPlayedMap->getScore2()) && ($playedMap->getScore1()<$playedMap->getScore2())){
                 $match->setScore1($match->getScore1()-1);
                 $match->setScore2($match->getScore2()+1);
                 $em->persist($match);
             }
-            elseif (($oldPlayedMap->getScore1()<$oldPlayedMap->getScore2())&&($playedMap->getScore1()>$playedMap->getScore2())){
+            elseif (($oldPlayedMap->getScore1()<$oldPlayedMap->getScore2()) && ($playedMap->getScore1()>$playedMap->getScore2())){
                 $match->setScore1($match->getScore1()+1);
                 $match->setScore2($match->getScore2()-1);
                 $em->persist($match);
             }
-            $em->persist($playedMap);
+
 
             $nextRound = $match->getRound()+1;
             $nextMatchNum = intval(ceil($match->getMatchNum()/2));
