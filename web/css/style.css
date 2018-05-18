@@ -7,12 +7,17 @@ body {
 
 
 h1 {
-    font-size: 22px;
-    color:   #1c2833 ;
+    font-size: 50px;
+    color: whitesmoke;
+    text-shadow: 6px 6px 6px black;
+    font-family: 'Audiowide', cursive;
 }
 
 h2 {
-    font-size: 21px;
+    font-size: 33px;
+    color: whitesmoke;
+    text-shadow: 6px 6px 6px black;
+    font-family: 'Audiowide', cursive;
 }
 
 p {
@@ -36,10 +41,15 @@ p {
 
 /* ----------HEADER-------------- */
 
+
+
+
+
 .header {
     background-color: whitesmoke;
     /* The image used */
-    /*background-image: url("../images/couv4.jpeg");*/
+    background:
+            url("../images/couverture.jpg");
 
     /* Full height */
     height: 100%;
@@ -56,6 +66,11 @@ p {
     width: 100%;
     max-width: 400px;
     height: auto;
+    background-color: whitesmoke;
+    border-radius: 20px;
+    border: 3px solid #FFC300;
+    box-shadow: 8px 8px 8px black;
+    opacity: 0.9;
 }
 
 #navbar {
