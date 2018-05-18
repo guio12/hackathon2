@@ -264,6 +264,11 @@
     box-shadow: 10px 10px 10px black;
 }
 
+.BracketUnit-flag img{
+    max-width: 30px;
+    height: auto;
+}
+
 
 /*      Paramètres version DESKTOP     */
 @media only screen and (min-width: 991px)
