@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+
+{%  block javascripts %}<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../js/tournoi.js"></script>
+{% endblock %}
+
 {% block body %}
     <div class="content">
         <h2>COMPETITION</h2>
@@ -12,442 +17,155 @@
                 <div class="Bracket-column Bracket-round-1">
                     <H3>1/8 FINALE</H3>
 
-                    <!--    group    -->
-                    <div class="Bracket-group">
-                        <!--    match    -->
-                        <div class="Bracket-match">
-                            <div class="Bracket-summary">
-                                <div class="BracketMatch-unit">
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <!--Bouton Modal EQUIPE 1 -->
-                                            <div class="button">
-                                                <div class="BracketUnit-country"><img src="{{ team.flag_url }}" class="beforeModalFlag"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#team1">{{ team.nationality }}</a></div>
+                    {% for i in 0..3 %}
+                        <!--    group    -->
+                        <div class="Bracket-group">
+                            {% for j in 0..1 %}
+                                {% set k=i+i+j %}
+                                <!--    match    -->
+                                <div class="Bracket-match">
+                                    <div class="Bracket-summary">
+                                        <div class="BracketMatch-unit">
+                                            <!--    equipe infos    -->
+                                            <div class="BracketUnit">
+                                                <div class="BracketUnit-flag">{% if matchs[k].team1!="" %}<img src="{{ matchs[k].team1.flagUrl }}"> </img>{% endif %}</div>
+                                                <div class="BracketUnit-clickable button">
+                                                    <div class="BracketUnit-country"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#team1{{ k }}">{% if matchs[k].team1!="" %}{{ matchs[k].team1.nationality }}{% endif %}</a></div>
+                                                </div>
+                                                <div class="BracketUnit-score">
+                                                    <span>{{ matchs[k].score1 }}</span>
+                                                </div>
+                                            </div>
+                                            <!--    equipe infos    -->
+                                            <div class="BracketUnit">
+                                                <div class="BracketUnit-flag">{% if matchs[k].team2!="" %}<img src="{{ matchs[k].team2.flagUrl }}"> </img>{% endif %}</div>
+                                                <div class="BracketUnit-clickable button">
+                                                    <div class="BracketUnit-country"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#team2{{ k }}">{% if matchs[k].team2!="" %}{{ matchs[k].team2.nationality }}{% endif %}</a></div>
+                                                </div>
+                                                <div class="BracketUnit-score">
+                                                    <span>{{ matchs[k].score2 }}</span>
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <!-- Modal EQUIPE 1 -->
-                                        <div class="modal fade" id="team1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-body">
+                                    </div>
+                                    <!-- Modal EQUIPE 1 -->
+                                    {% if matchs[k].team1!="" %}
+                                    <div class="modal fade" id="team1{{ k }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
 
-                                                        <h2 class="inModalTitle"><img src="{{ team.flag_url }}" class="inModalFlag">{{ team.nationality }}</h2>
-                                                        <div class="container">
-                                                            <div class="row" id="blockJoueur1">
+                                                    <h2 class="inModalTitle"><img src="{{ matchs[k].team1.flagUrl }}" class="inModalFlag">{{ matchs[k].team1.nationality }}</h2>
+                                                    <div class="container">
+                                                        {% for l in 0..2 %}
+                                                            <div class="row" id="blockJoueur{{ l }}">
                                                                 <div class="inModalPlayerContainer">
                                                                     <div class="inModalBlockPlayerPhoto">
-                                                                        <p><img src="{{ player.photo_url }}"></p>
+                                                                        <p><img src="{{ matchs[k].team1.players[l].photoUrl }}"></p>
                                                                     </div>
-                                                                        <h3>{{ player.pseudo }}</h3>
-                                                                        <h5>{{ player.role }}</h5>
+                                                                    <h3>{{ matchs[k].team1.players[l].pseudo }}</h3>
+                                                                    <h5>{{ matchs[k].team1.players[l].role }}</h5>
                                                                 </div>
                                                             </div>
-                                                            <div class="row" id="blockJoueur2">
-                                                                <div class="inModalPlayerContainer">
-                                                                        <div class="inModalBlockPlayerPhoto">
-                                                                            <p><img src="{{ player.photo_url }}"></p>
-                                                                        </div>
-                                                                        <h3>{{ player.pseudo }}</h3>
-                                                                        <h5>{{ player.role }}</h5>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row" id="blockJoueur3">
-                                                                <div class="inModalPlayerContainer">
-                                                                    <div class="inModalBlockPlayerPhoto">
-                                                                        <p><img src="{{ player.photo_url }}"></p>
-                                                                    </div>
-                                                                    <h3>{{ player.pseudo }}</h3>
-                                                                    <h5>{{ player.role }}</h5>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="container">
-                                                            <div class="row" id="blockJoueur4">
-                                                                <div class="inModalPlayerContainer">
-                                                                    <div class="inModalBlockPlayerPhoto">
-                                                                        <p><img src="{{ player.photo_url }}"></p>
-                                                                    </div>
-                                                                    <h3>{{ player.pseudo }}</h3>
-                                                                    <h5>{{ player.role }}</h5>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row" id="blockJoueur5">
-                                                                <div class="inModalPlayerContainer">
-                                                                    <div class="inModalBlockPlayerPhoto">
-                                                                        <p><img src="{{ player.photo_url }}"></p>
-                                                                    </div>
-                                                                    <h3>{{ player.pseudo }}</h3>
-                                                                    <h5>{{ player.role }}</h5>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row" id="blockJoueur6">
-                                                                <div class="inModalPlayerContainer">
-                                                                    <div class="inModalBlockPlayerPhoto">
-                                                                        <p><img src="{{ player.photo_url }}"></p>
-                                                                    </div>
-                                                                    <h3>{{ player.pseudo }}</h3>
-                                                                    <h5>{{ player.role }}</h5>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                                        {% endfor %}
                                                     </div>
+                                                    <div class="container">
+                                                        {% for l in 3..5 %}
+                                                            <div class="row" id="blockJoueur{{ l }}">
+                                                                <div class="inModalPlayerContainer">
+                                                                    <h3>{{ matchs[k].team1.players[l].pseudo }}</h3>
+                                                                    <h5>{{ matchs[k].team1.players[l].role }}</h5>
+                                                                    <div class="inModalBlockPlayerPhoto">
+                                                                        <p><img src="{{ matchs[k].team1.players[l].photoUrl }}"></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+
                                                 </div>
-                                        <!-- Fin Modal EQUIPE 1-->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                            <!-- Fin Modal EQUIPE 1-->
 
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="BracketMatch-play">
-                                    <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
-                                </div>
-                            </div>
-                            <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
-                                <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
-                                        <div class="BracketMatchResult">
-                                            <div class="BracketMatchResult-score">0</div>
-                                            <div class="BracketMatchResult-map">Nom de Map</div>
-                                            <div class="BracketMatchResult-score">0</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--    match    -->
-                        <div class="Bracket-match">
-                            <div class="Bracket-summary">
-                                <div class="BracketMatch-unit">
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="BracketMatch-play">
-                                    <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
-                                </div>
-                            </div>
-                            <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
-                                <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
-                                        <div class="BracketMatchResult">
-                                            <div class="BracketMatchResult-score">0</div>
-                                            <div class="BracketMatchResult-map">Nom de Map</div>
-                                            <div class="BracketMatchResult-score">0</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--    arrow    -->
-                        <div class="Bracket-arrow"></div>
-                    </div>
 
-                    <!--    group    -->
-                    <div class="Bracket-group">
-                        <!--    match    -->
-                        <div class="Bracket-match">
-                            <div class="Bracket-summary">
-                                <div class="BracketMatch-unit">
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
                                         </div>
                                     </div>
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="BracketMatch-play">
-                                    <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
-                                </div>
-                            </div>
-                            <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
-                                <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
-                                        <div class="BracketMatchResult">
-                                            <div class="BracketMatchResult-score">0</div>
-                                            <div class="BracketMatchResult-map">Nom de Map</div>
-                                            <div class="BracketMatchResult-score">0</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--    match    -->
-                        <div class="Bracket-match">
-                            <div class="Bracket-summary">
-                                <div class="BracketMatch-unit">
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="BracketMatch-play">
-                                    <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
-                                </div>
-                            </div>
-                            <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
-                                <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
-                                        <div class="BracketMatchResult">
-                                            <div class="BracketMatchResult-score">0</div>
-                                            <div class="BracketMatchResult-map">Nom de Map</div>
-                                            <div class="BracketMatchResult-score">0</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--    arrow    -->
-                        <div class="Bracket-arrow"></div>
-                    </div>
+                                    {% endif %}
+                                    <!-- Modal EQUIPE 2 -->
+                                    {% if matchs[k].team2!="" %}
+                                    <div class="modal fade" id="team2{{ k }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
 
-                    <!--    group    -->
-                    <div class="Bracket-group">
-                        <!--    match    -->
-                        <div class="Bracket-match">
-                            <div class="Bracket-summary">
-                                <div class="BracketMatch-unit">
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="BracketMatch-play">
-                                    <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
-                                </div>
-                            </div>
-                            <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
-                                <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
-                                        <div class="BracketMatchResult">
-                                            <div class="BracketMatchResult-score">0</div>
-                                            <div class="BracketMatchResult-map">Nom de Map</div>
-                                            <div class="BracketMatchResult-score">0</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--    match    -->
-                        <div class="Bracket-match">
-                            <div class="Bracket-summary">
-                                <div class="BracketMatch-unit">
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="BracketMatch-play">
-                                    <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
-                                </div>
-                            </div>
-                            <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
-                                <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
-                                        <div class="BracketMatchResult">
-                                            <div class="BracketMatchResult-score">0</div>
-                                            <div class="BracketMatchResult-map">Nom de Map</div>
-                                            <div class="BracketMatchResult-score">0</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--    arrow    -->
-                        <div class="Bracket-arrow"></div>
-                    </div>
+                                                    <h2 class="inModalTitle"><img src="{{ matchs[k].team2.flagUrl }}" class="inModalFlag">{{ matchs[k].team2.nationality }}</h2>
+                                                    <div class="container">
+                                                        {% for l in 0..2 %}
+                                                        <div class="row" id="blockJoueur{{ l }}">
+                                                            <div class="inModalPlayerContainer">
+                                                                <div class="inModalBlockPlayerPhoto">
+                                                                    <p><img src="{{ matchs[k].team2.players[l].photoUrl }}"></p>
+                                                                </div>
+                                                                <h3>{{ matchs[k].team2.players[l].pseudo }}</h3>
+                                                                <h5>{{ matchs[k].team2.players[l].role }}</h5>
+                                                            </div>
+                                                        </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                    <div class="container">
+                                                        {% for l in 3..5 %}
+                                                        <div class="row" id="blockJoueur{{ l }}">
+                                                            <div class="inModalPlayerContainer">
+                                                                <h3>{{ matchs[k].team2.players[l].pseudo }}</h3>
+                                                                <h5>{{ matchs[k].team2.players[l].role }}</h5>
+                                                                <div class="inModalBlockPlayerPhoto">
+                                                                    <p><img src="{{ matchs[k].team2.players[l].photoUrl }}"></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        {% endfor %}
+                                                    </div>
 
-                    <!--    group    -->
-                    <div class="Bracket-group">
-                        <!--    match    -->
-                        <div class="Bracket-match">
-                            <div class="Bracket-summary">
-                                <div class="BracketMatch-unit">
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
+                                            <!-- Fin Modal EQUIPE 1-->
+
+
+                                    <div class="BracketMatch-play">
+                                            <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
                                     </div>
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
+
                                     </div>
-                                </div>
-                                <div class="BracketMatch-play">
-                                    <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
-                                </div>
-                            </div>
-                            <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
-                                <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
-                                        <div class="BracketMatchResult">
-                                            <div class="BracketMatchResult-score">0</div>
-                                            <div class="BracketMatchResult-map">Nom de Map</div>
-                                            <div class="BracketMatchResult-score">0</div>
+                                    {% endif %}
+
+                                    <div class="Bracket-details">
+                                        <div class="BracketMatch-detailsTrigger match{{ k+1 }}">Match Details</div>
+                                        <div class="BracketMatchReport">
+                                            <div class="BracketMatchReport-list score_match{{ k+1 }}" style="display: none;">
+                                                {% for playedMap in matchs[k].playedMaps %}
+                                                <div class="BracketMatchResult">
+                                                    <div class="BracketMatchResult-score">{{ playedMap.score1 }}</div>
+                                                    <div class="BracketMatchResult-map">{{ playedMap.map }}</div>
+                                                    <div class="BracketMatchResult-score">{{ playedMap.score2 }}</div>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+
+                            {% endfor %}
                         </div>
-                        <!--    match    -->
-                        <div class="Bracket-match">
-                            <div class="Bracket-summary">
-                                <div class="BracketMatch-unit">
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="BracketMatch-play">
-                                    <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
-                                </div>
-                            </div>
-                            <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
-                                <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
-                                        <div class="BracketMatchResult">
-                                            <div class="BracketMatchResult-score">0</div>
-                                            <div class="BracketMatchResult-map">Nom de Map</div>
-                                            <div class="BracketMatchResult-score">0</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--    arrow    -->
-                        <div class="Bracket-arrow"></div>
-                    </div>
+
+                    {% endfor %}
 
                 </div>
             </div>
@@ -456,186 +174,153 @@
             <div class="container-fluid col-md-3">
                 <div class="Bracket-column Bracket-round-2">
                     <H3>1/4 FINALE</H3>
-
+                    {% for i in 4..5 %}
                     <!--    group    -->
                     <div class="Bracket-group one">
-                        <!--    match    -->
-                        <div class="Bracket-match">
-                            <div class="Bracket-summary">
-                                <div class="BracketMatch-unit">
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
+                        {% for j in 0..1 %}
+                        {% set k=i+i+j %}
+                            <!--    match    -->
+                            <div class="Bracket-match">
+                                <div class="Bracket-summary">
+                                    <div class="BracketMatch-unit">
+                                        <!--    equipe infos    -->
+                                        <div class="BracketUnit">
+                                            <div class="BracketUnit-flag">{% if matchs[k].team1!="" %}<img src="{{ matchs[k].team1.flagUrl }}"> </img>{% endif %}</div>
+                                            <div class="BracketUnit-clickable button">
+                                                <div class="BracketUnit-country"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#team1{{ k }}">{% if matchs[k].team1!="" %}{{ matchs[k].team1.nationality }}{% endif %}</a></div>
+                                            </div>
+                                            <div class="BracketUnit-score">
+                                                <span>{{ matchs[k].score1 }}</span>
+                                            </div>
                                         </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="BracketMatch-play">
-                                    <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
-                                </div>
-                            </div>
-                            <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
-                                <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
-                                        <div class="BracketMatchResult">
-                                            <div class="BracketMatchResult-score">0</div>
-                                            <div class="BracketMatchResult-map">Nom de Map</div>
-                                            <div class="BracketMatchResult-score">0</div>
+                                        <!--    equipe infos    -->
+                                        <div class="BracketUnit">
+                                            <div class="BracketUnit-flag">{% if matchs[k].team2!="" %}<img src="{{ matchs[k].team2.flagUrl }}"> </img>{% endif %}</div>
+                                            <div class="BracketUnit-clickable button">
+                                                <div class="BracketUnit-country"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#team2{{ k }}">{% if matchs[k].team2!="" %}{{ matchs[k].team2.nationality }}{% endif %}</a></div>
+                                            </div>
+                                            <div class="BracketUnit-score">
+                                                <span>{{ matchs[k].score2 }}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--    match    -->
-                        <div class="Bracket-match">
-                            <div class="Bracket-summary">
-                                <div class="BracketMatch-unit">
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="BracketMatch-play">
-                                    <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
-                                </div>
-                            </div>
-                            <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
-                                <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
-                                        <div class="BracketMatchResult">
-                                            <div class="BracketMatchResult-score">0</div>
-                                            <div class="BracketMatchResult-map">Nom de Map</div>
-                                            <div class="BracketMatchResult-score">0</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--    arrow    -->
-                        <div class="Bracket-arrow"></div>
-                    </div>
 
-                    <!--    group    -->
-                    <div class="Bracket-group two">
-                        <!--    match    -->
-                        <div class="Bracket-match">
-                            <div class="Bracket-summary">
-                                <div class="BracketMatch-unit">
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="BracketMatch-play">
-                                    <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
+                                <!-- Modal EQUIPE 1 -->
+                                {% if matchs[k].team1!="" %}
+                                    <div class="modal fade" id="team1{{ k }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+
+                                                    <h2 class="inModalTitle"><img src="{{ matchs[k].team1.flagUrl }}" class="inModalFlag">{{ matchs[k].team1.nationality }}</h2>
+                                                    <div class="container">
+                                                        {% for l in 0..2 %}
+                                                            <div class="row" id="blockJoueur{{ l }}">
+                                                                <div class="inModalPlayerContainer">
+                                                                    <div class="inModalBlockPlayerPhoto">
+                                                                        <p><img src="{{ matchs[k].team1.players[l].photoUrl }}"></p>
+                                                                    </div>
+                                                                    <h3>{{ matchs[k].team1.players[l].pseudo }}</h3>
+                                                                    <h5>{{ matchs[k].team1.players[l].role }}</h5>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                    <div class="container">
+                                                        {% for l in 3..5 %}
+                                                            <div class="row" id="blockJoueur{{ l }}">
+                                                                <div class="inModalPlayerContainer">
+                                                                    <h3>{{ matchs[k].team1.players[l].pseudo }}</h3>
+                                                                    <h5>{{ matchs[k].team1.players[l].role }}</h5>
+                                                                    <div class="inModalBlockPlayerPhoto">
+                                                                        <p><img src="{{ matchs[k].team1.players[l].photoUrl }}"></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                            <!-- Fin Modal EQUIPE 1-->
+
+
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                <!-- Modal EQUIPE 2 -->
+                                {% if matchs[k].team2!="" %}
+                                    <div class="modal fade" id="team2{{ k }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+
+                                                    <h2 class="inModalTitle"><img src="{{ matchs[k].team2.flagUrl }}" class="inModalFlag">{{ matchs[k].team2.nationality }}</h2>
+                                                    <div class="container">
+                                                        {% for l in 0..2 %}
+                                                            <div class="row" id="blockJoueur{{ l }}">
+                                                                <div class="inModalPlayerContainer">
+                                                                    <div class="inModalBlockPlayerPhoto">
+                                                                        <p><img src="{{ matchs[k].team2.players[l].photoUrl }}"></p>
+                                                                    </div>
+                                                                    <h3>{{ matchs[k].team2.players[l].pseudo }}</h3>
+                                                                    <h5>{{ matchs[k].team2.players[l].role }}</h5>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                    <div class="container">
+                                                        {% for l in 3..5 %}
+                                                            <div class="row" id="blockJoueur{{ l }}">
+                                                                <div class="inModalPlayerContainer">
+                                                                    <h3>{{ matchs[k].team2.players[l].pseudo }}</h3>
+                                                                    <h5>{{ matchs[k].team2.players[l].role }}</h5>
+                                                                    <div class="inModalBlockPlayerPhoto">
+                                                                        <p><img src="{{ matchs[k].team2.players[l].photoUrl }}"></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Fin Modal EQUIPE 1-->
+
+
+                                        <div class="BracketMatch-play">
+                                            <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
+                                        </div>
+
+                                    </div>
+                                {% endif %}
+
+                                <div class="Bracket-details">
+                                    <div class="BracketMatch-detailsTrigger match{{ k+1 }}">Match Details</div>
+                                    <div class="BracketMatchReport">
+                                        <div class="BracketMatchReport-list score_match{{ k+1 }}" style="display: none;">
+                                            {% for playedMap in matchs[k].playedMaps %}
+                                                <div class="BracketMatchResult">
+                                                    <div class="BracketMatchResult-score">{{ playedMap.score1 }}</div>
+                                                    <div class="BracketMatchResult-map">{{ playedMap.map }}</div>
+                                                    <div class="BracketMatchResult-score">{{ playedMap.score2 }}</div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
-                                <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
-                                        <div class="BracketMatchResult">
-                                            <div class="BracketMatchResult-score">0</div>
-                                            <div class="BracketMatchResult-map">Nom de Map</div>
-                                            <div class="BracketMatchResult-score">0</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--    match    -->
-                        <div class="Bracket-match">
-                            <div class="Bracket-summary">
-                                <div class="BracketMatch-unit">
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="BracketMatch-play">
-                                    <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
-                                </div>
-                            </div>
-                            <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
-                                <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
-                                        <div class="BracketMatchResult">
-                                            <div class="BracketMatchResult-score">0</div>
-                                            <div class="BracketMatchResult-map">Nom de Map</div>
-                                            <div class="BracketMatchResult-score">0</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--    arrow    -->
-                        <div class="Bracket-arrow"></div>
+                        {% endfor %}
                     </div>
+                    {% endfor %}
 
                 </div>
 
@@ -645,98 +330,155 @@
             <div class="container-fluid col-md-3">
                 <div class="Bracket-column Bracket-round-3">
                     <H3>1/2 FINALE</H3>
-
+                    {% set i=6 %}
                 <!--    group    -->
-                <div class="Bracket-group">
-                    <!--    match    -->
-                    <div class="Bracket-match">
-                        <div class="Bracket-summary">
-                            <div class="BracketMatch-unit">
-                                <!--    equipe infos    -->
-                                <div class="BracketUnit">
-                                    <div class="BracketUnit-flag"></div>
-                                    <div class="BracketUnit-clickable">
-                                        <div class="BracketUnit-country">Nom du pays</div>
+                    <div class="Bracket-group">
+                        {% for j in 0..1 %}
+                        {% set k=i+i+j %}
+                        <!--    match    -->
+                            <div class="Bracket-match">
+                                <div class="Bracket-summary">
+                                    <div class="BracketMatch-unit">
+                                        <!--    equipe infos    -->
+                                        <div class="BracketUnit">
+                                            <div class="BracketUnit-flag">{% if matchs[k].team1!="" %}<img src="{{ matchs[k].team1.flagUrl }}"> </img>{% endif %}</div>
+                                            <div class="BracketUnit-clickable button">
+                                                <div class="BracketUnit-country"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#team1{{ k }}">{% if matchs[k].team1!="" %}{{ matchs[k].team1.nationality }}{% endif %}</a></div>
+                                            </div>
+                                            <div class="BracketUnit-score">
+                                                <span>{{ matchs[k].score1 }}</span>
+                                            </div>
+                                        </div>
+                                        <!--    equipe infos    -->
+                                        <div class="BracketUnit">
+                                            <div class="BracketUnit-flag">{% if matchs[k].team2!="" %}<img src="{{ matchs[k].team2.flagUrl }}"> </img>{% endif %}</div>
+                                            <div class="BracketUnit-clickable button">
+                                                <div class="BracketUnit-country"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#team2{{ k }}">{% if matchs[k].team2!="" %}{{ matchs[k].team2.nationality }}{% endif %}</a></div>
+                                            </div>
+                                            <div class="BracketUnit-score">
+                                                <span>{{ matchs[k].score2 }}</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="BracketUnit-score">
-                                        <span>0</span>
-                                    </div>
+
                                 </div>
-                                <!--    equipe infos    -->
-                                <div class="BracketUnit">
-                                    <div class="BracketUnit-flag"></div>
-                                    <div class="BracketUnit-clickable">
-                                        <div class="BracketUnit-country">Nom du pays</div>
+                                <!-- Modal EQUIPE 1 -->
+                                {% if matchs[k].team1!="" %}
+                                    <div class="modal fade" id="team1{{ k }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+
+                                                    <h2 class="inModalTitle"><img src="{{ matchs[k].team1.flagUrl }}" class="inModalFlag">{{ matchs[k].team1.nationality }}</h2>
+                                                    <div class="container">
+                                                        {% for l in 0..2 %}
+                                                            <div class="row" id="blockJoueur{{ l }}">
+                                                                <div class="inModalPlayerContainer">
+                                                                    <div class="inModalBlockPlayerPhoto">
+                                                                        <p><img src="{{ matchs[k].team1.players[l].photoUrl }}"></p>
+                                                                    </div>
+                                                                    <h3>{{ matchs[k].team1.players[l].pseudo }}</h3>
+                                                                    <h5>{{ matchs[k].team1.players[l].role }}</h5>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                    <div class="container">
+                                                        {% for l in 3..5 %}
+                                                            <div class="row" id="blockJoueur{{ l }}">
+                                                                <div class="inModalPlayerContainer">
+                                                                    <h3>{{ matchs[k].team1.players[l].pseudo }}</h3>
+                                                                    <h5>{{ matchs[k].team1.players[l].role }}</h5>
+                                                                    <div class="inModalBlockPlayerPhoto">
+                                                                        <p><img src="{{ matchs[k].team1.players[l].photoUrl }}"></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                            <!-- Fin Modal EQUIPE 1-->
+
+
+                                        </div>
                                     </div>
-                                    <div class="BracketUnit-score">
-                                        <span>0</span>
+                                {% endif %}
+                                <!-- Modal EQUIPE 2 -->
+                                {% if matchs[k].team2!="" %}
+                                    <div class="modal fade" id="team2{{ k }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+
+                                                    <h2 class="inModalTitle"><img src="{{ matchs[k].team2.flagUrl }}" class="inModalFlag">{{ matchs[k].team2.nationality }}</h2>
+                                                    <div class="container">
+                                                        {% for l in 0..2 %}
+                                                            <div class="row" id="blockJoueur{{ l }}">
+                                                                <div class="inModalPlayerContainer">
+                                                                    <div class="inModalBlockPlayerPhoto">
+                                                                        <p><img src="{{ matchs[k].team2.players[l].photoUrl }}"></p>
+                                                                    </div>
+                                                                    <h3>{{ matchs[k].team2.players[l].pseudo }}</h3>
+                                                                    <h5>{{ matchs[k].team2.players[l].role }}</h5>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                    <div class="container">
+                                                        {% for l in 3..5 %}
+                                                            <div class="row" id="blockJoueur{{ l }}">
+                                                                <div class="inModalPlayerContainer">
+                                                                    <h3>{{ matchs[k].team2.players[l].pseudo }}</h3>
+                                                                    <h5>{{ matchs[k].team2.players[l].role }}</h5>
+                                                                    <div class="inModalBlockPlayerPhoto">
+                                                                        <p><img src="{{ matchs[k].team2.players[l].photoUrl }}"></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Fin Modal EQUIPE 1-->
+
+
+                                        <div class="BracketMatch-play">
+                                            <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
+                                        </div>
+
+                                    </div>
+                                {% endif %}
+
+                                <div class="Bracket-details">
+                                    <div class="BracketMatch-detailsTrigger match{{ k+1 }}">Match Details</div>
+                                    <div class="BracketMatchReport">
+                                        <div class="BracketMatchReport-list score_match{{ k+1 }}" style="display: none;">
+                                            {% for playedMap in matchs[k].playedMaps %}
+                                                <div class="BracketMatchResult">
+                                                    <div class="BracketMatchResult-score">{{ playedMap.score1 }}</div>
+                                                    <div class="BracketMatchResult-map">{{ playedMap.map }}</div>
+                                                    <div class="BracketMatchResult-score">{{ playedMap.score2 }}</div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="BracketMatch-play">
-                                <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
-                            </div>
-                        </div>
-                        <div class="Bracket-details">
-                            <div class="BracketMatch-detailsTrigger">Match Details</div>
-                            <div class="BracketMatchReport">
-                                <div class="BracketMatchReport-list">
-                                    <div class="BracketMatchResult">
-                                        <div class="BracketMatchResult-score">0</div>
-                                        <div class="BracketMatchResult-map">Nom de Map</div>
-                                        <div class="BracketMatchResult-score">0</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
-                    <!--    match    -->
-                    <div class="Bracket-match">
-                        <div class="Bracket-summary">
-                            <div class="BracketMatch-unit">
-                                <!--    equipe infos    -->
-                                <div class="BracketUnit">
-                                    <div class="BracketUnit-flag"></div>
-                                    <div class="BracketUnit-clickable">
-                                        <div class="BracketUnit-country">Nom du pays</div>
-                                    </div>
-                                    <div class="BracketUnit-score">
-                                        <span>0</span>
-                                    </div>
-                                </div>
-                                <!--    equipe infos    -->
-                                <div class="BracketUnit">
-                                    <div class="BracketUnit-flag"></div>
-                                    <div class="BracketUnit-clickable">
-                                        <div class="BracketUnit-country">Nom du pays</div>
-                                    </div>
-                                    <div class="BracketUnit-score">
-                                        <span>0</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="BracketMatch-play">
-                                <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
-                            </div>
-                        </div>
-                        <div class="Bracket-details">
-                            <div class="BracketMatch-detailsTrigger">Match Details</div>
-                            <div class="BracketMatchReport">
-                                <div class="BracketMatchReport-list">
-                                    <div class="BracketMatchResult">
-                                        <div class="BracketMatchResult-score">0</div>
-                                        <div class="BracketMatchResult-map">Nom de Map</div>
-                                        <div class="BracketMatchResult-score">0</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--    arrow    -->
-                    <div class="Bracket-arrow"></div>
+
                 </div>
 
-            </div>
             </div>
 
             <!--    ----------------------------FINALE----------------------------------   -->
@@ -745,50 +487,146 @@
                     <H3>FINALE</H3>
                 <!--    group    -->
                 <div class="Bracket-group">
+                    {% set k=14 %}
                     <!--    match    -->
                     <div class="Bracket-match">
                         <div class="Bracket-summary">
                             <div class="BracketMatch-unit">
                                 <!--    equipe infos    -->
                                 <div class="BracketUnit">
-                                    <div class="BracketUnit-flag"></div>
-                                    <div class="BracketUnit-clickable">
-                                        <div class="BracketUnit-country">Nom du pays</div>
+                                    <div class="BracketUnit-flag">{% if matchs[k].team1!="" %}<img src="{{ matchs[k].team1.flagUrl }}"> </img>{% endif %}</div>
+                                    <div class="BracketUnit-clickable button">
+                                        <div class="BracketUnit-country"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#team1{{ k }}">{% if matchs[k].team1!="" %}{{ matchs[k].team1.nationality }}{% endif %}</a></div>
                                     </div>
                                     <div class="BracketUnit-score">
-                                        <span>0</span>
+                                        <span>{{ matchs[k].score1 }}</span>
                                     </div>
                                 </div>
                                 <!--    equipe infos    -->
                                 <div class="BracketUnit">
-                                    <div class="BracketUnit-flag"></div>
-                                    <div class="BracketUnit-clickable">
-                                        <div class="BracketUnit-country">Nom du pays</div>
+                                    <div class="BracketUnit-flag">{% if matchs[k].team2!="" %}<img src="{{ matchs[k].team2.flagUrl }}"> </img>{% endif %}</div>
+                                    <div class="BracketUnit-clickable button">
+                                        <div class="BracketUnit-country"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#team2{{ k }}">{% if matchs[k].team2!="" %}{{ matchs[k].team2.nationality }}{% endif %}</a></div>
                                     </div>
                                     <div class="BracketUnit-score">
-                                        <span>0</span>
+                                        <span>{{ matchs[k].score2 }}</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="BracketMatch-play">
-                                <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
-                            </div>
+
                         </div>
-                        <div class="Bracket-details">
-                            <div class="BracketMatch-detailsTrigger">Match Details</div>
-                            <div class="BracketMatchReport">
-                                <div class="BracketMatchReport-list">
-                                    <div class="BracketMatchResult">
-                                        <div class="BracketMatchResult-score">0</div>
-                                        <div class="BracketMatchResult-map">Nom de Map</div>
-                                        <div class="BracketMatchResult-score">0</div>
+                        <!-- Modal EQUIPE 1 -->
+                        {% if matchs[k].team1!="" %}
+                            <div class="modal fade" id="team1{{ k }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+
+                                            <h2 class="inModalTitle"><img src="{{ matchs[k].team1.flagUrl }}" class="inModalFlag">{{ matchs[k].team1.nationality }}</h2>
+                                            <div class="container">
+                                                {% for l in 0..2 %}
+                                                    <div class="row" id="blockJoueur{{ l }}">
+                                                        <div class="inModalPlayerContainer">
+                                                            <div class="inModalBlockPlayerPhoto">
+                                                                <p><img src="{{ matchs[k].team1.players[l].photoUrl }}"></p>
+                                                            </div>
+                                                            <h3>{{ matchs[k].team1.players[l].pseudo }}</h3>
+                                                            <h5>{{ matchs[k].team1.players[l].role }}</h5>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <div class="container">
+                                                {% for l in 3..5 %}
+                                                    <div class="row" id="blockJoueur{{ l }}">
+                                                        <div class="inModalPlayerContainer">
+                                                            <h3>{{ matchs[k].team1.players[l].pseudo }}</h3>
+                                                            <h5>{{ matchs[k].team1.players[l].role }}</h5>
+                                                            <div class="inModalBlockPlayerPhoto">
+                                                                <p><img src="{{ matchs[k].team1.players[l].photoUrl }}"></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                        </div>
                                     </div>
+                                    <!-- Fin Modal EQUIPE 1-->
+
+
+                                </div>
+                            </div>
+                        {% endif %}
+                        <!-- Modal EQUIPE 2 -->
+                        {% if matchs[k].team2!="" %}
+                            <div class="modal fade" id="team2{{ k }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+
+                                            <h2 class="inModalTitle"><img src="{{ matchs[k].team2.flagUrl }}" class="inModalFlag">{{ matchs[k].team2.nationality }}</h2>
+                                            <div class="container">
+                                                {% for l in 0..2 %}
+                                                    <div class="row" id="blockJoueur{{ l }}">
+                                                        <div class="inModalPlayerContainer">
+                                                            <div class="inModalBlockPlayerPhoto">
+                                                                <p><img src="{{ matchs[k].team2.players[l].photoUrl }}"></p>
+                                                            </div>
+                                                            <h3>{{ matchs[k].team2.players[l].pseudo }}</h3>
+                                                            <h5>{{ matchs[k].team2.players[l].role }}</h5>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <div class="container">
+                                                {% for l in 3..5 %}
+                                                    <div class="row" id="blockJoueur{{ l }}">
+                                                        <div class="inModalPlayerContainer">
+                                                            <h3>{{ matchs[k].team2.players[l].pseudo }}</h3>
+                                                            <h5>{{ matchs[k].team2.players[l].role }}</h5>
+                                                            <div class="inModalBlockPlayerPhoto">
+                                                                <p><img src="{{ matchs[k].team2.players[l].photoUrl }}"></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Fin Modal EQUIPE 1-->
+
+
+                                <div class="BracketMatch-play">
+                                    <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
+                                </div>
+
+                            </div>
+                        {% endif %}
+
+                        <div class="Bracket-details">
+                            <div class="BracketMatch-detailsTrigger match{{ k+1 }}">Match Details</div>
+                            <div class="BracketMatchReport">
+                                <div class="BracketMatchReport-list score_match{{ k+1 }}" style="display: none;">
+                                    {% for playedMap in matchs[k].playedMaps %}
+                                        <div class="BracketMatchResult">
+                                            <div class="BracketMatchResult-score">{{ playedMap.score1 }}</div>
+                                            <div class="BracketMatchResult-map">{{ playedMap.map }}</div>
+                                            <div class="BracketMatchResult-score">{{ playedMap.score2 }}</div>
+                                        </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--    arrow    -->
-                    <div class="Bracket-arrow"></div>
                 </div>
 
             </div>

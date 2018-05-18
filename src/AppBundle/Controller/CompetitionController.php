@@ -13,7 +13,9 @@ class CompetitionController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('competition/index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $matchs = $em->getRepository('AppBundle:OW_Match')->findAll();
+
+        return $this->render('competition/index.html.twig', ['matchs'=>$matchs]);
     }
 }

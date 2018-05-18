@@ -69,18 +69,28 @@ class PlayedMapController extends Controller
                 $match->setScore2($match->getScore2() + 1);
                 $em->persist($match);
             }
+
+            $nextRound = $match->getRound()+1;
+            $nextMatchNum = intval(ceil($match->getMatchNum()/2));
+            $nextMatch = $em->getRepository('AppBundle:OW_Match')->findOneBy(['round'=>$nextRound,'matchNum'=>$nextMatchNum]);
+
             if ($match->getScore1()==3){
-                $nextRound = $match->getRound()+1;
-                $nextMatchNum = intval(ceil($match->getMatchNum()/2));
-                $nextMatch = $em->getRepository('AppBundle:OW_Match')->findOneBy(['round'=>$nextRound,'matchNum'=>$nextMatchNum]);
-                $nextMatch->setTeam1($match->getTeam1());
+                if($match->getMatchNum()%2==1){
+                    $nextMatch->setTeam1($match->getTeam1());
+                }
+                else {
+                    $nextMatch->setTeam2($match->getTeam1());
+                }
                 $em->persist($nextMatch);
             }
             elseif ($match->getScore2()==3){
-                $nextRound = $match->getRound()+1;
-                $nextMatchNum = intval(ceil($match->getMatchNum()/2));
-                $nextMatch = $em->getRepository('AppBundle:OW_Match')->findOneBy(['round'=>$nextRound,'matchNum'=>$nextMatchNum]);
-                $nextMatch->setTeam2($match->getTeam2());
+
+                if($match->getMatchNum()%2==1){
+                    $nextMatch->setTeam1($match->getTeam2());
+                }
+                else {
+                    $nextMatch->setTeam2($match->getTeam2());
+                }
                 $em->persist($nextMatch);
             }
 
@@ -118,13 +128,68 @@ class PlayedMapController extends Controller
      */
     public function editAction(Request $request, PlayedMap $playedMap)
     {
+
+        $oldPlayedMap = clone $playedMap;
+
         $deleteForm = $this->createDeleteForm($playedMap);
         $editForm = $this->createForm('AppBundle\Form\PlayedMapType', $playedMap);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
 
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($playedMap);
+
+            $match = $em->getRepository('AppBundle:OW_Match')->findOneBy(['id'=>$playedMap->getOwMatch()]);
+
+
+
+            if (($oldPlayedMap->getScore1()>$oldPlayedMap->getScore2()) && ($playedMap->getScore1()<$playedMap->getScore2())){
+                $match->setScore1($match->getScore1()-1);
+                $match->setScore2($match->getScore2()+1);
+                $em->persist($match);
+            }
+            elseif (($oldPlayedMap->getScore1()<$oldPlayedMap->getScore2()) && ($playedMap->getScore1()>$playedMap->getScore2())){
+                $match->setScore1($match->getScore1()+1);
+                $match->setScore2($match->getScore2()-1);
+                $em->persist($match);
+            }
+
+
+            $nextRound = $match->getRound()+1;
+            $nextMatchNum = intval(ceil($match->getMatchNum()/2));
+            $nextMatch = $em->getRepository('AppBundle:OW_Match')->findOneBy(['round'=>$nextRound,'matchNum'=>$nextMatchNum]);
+
+            if ($match->getScore1()==3){
+                if($match->getMatchNum()%2==1){
+                    $nextMatch->setTeam1($match->getTeam1());
+                }
+                else {
+                    $nextMatch->setTeam2($match->getTeam1());
+                }
+                $em->persist($nextMatch);
+            }
+            elseif ($match->getScore2()==3){
+
+                if($match->getMatchNum()%2==1){
+                    $nextMatch->setTeam1($match->getTeam2());
+                }
+                else {
+                    $nextMatch->setTeam2($match->getTeam2());
+                }
+                $em->persist($nextMatch);
+            }
+            else {
+                if($match->getMatchNum()%2==1){
+                    $nextMatch->setTeam1(null);
+                }
+                else {
+                    $nextMatch->setTeam2(null);
+                }
+                $em->persist($nextMatch);
+            }
+
+            $em->flush();
             return $this->redirectToRoute('playedmap_edit', array('id' => $playedMap->getId()));
         }
 

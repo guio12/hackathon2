@@ -261,6 +261,12 @@
     border: solid 2px #FFC300;
     border-radius: 8px;
     background-color:  #212f3d;
+    box-shadow: 10px 10px 10px black;
+}
+
+.BracketUnit-flag img{
+    max-width: 30px;
+    height: auto;
 }
 
 
