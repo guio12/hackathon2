@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+
+{%  block javascripts %}<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../js/tournoi.js"></script>
+{% endblock %}
+
 {% block body %}
     <div class="content">
         <h2>COMPETITION</h2>
@@ -44,9 +49,9 @@
                                 </div>
                             </div>
                             <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
+                                <div class="BracketMatch-detailsTrigger match1">Match Details</div>
                                 <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
+                                    <div class="BracketMatchReport-list score_match1" style="display: none;">
                                         <div class="BracketMatchResult">
                                             <div class="BracketMatchResult-score">0</div>
                                             <div class="BracketMatchResult-map">Nom de Map</div>
@@ -86,99 +91,9 @@
                                 </div>
                             </div>
                             <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
+                                <div class="BracketMatch-detailsTrigger match2">Match Details</div>
                                 <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
-                                        <div class="BracketMatchResult">
-                                            <div class="BracketMatchResult-score">0</div>
-                                            <div class="BracketMatchResult-map">Nom de Map</div>
-                                            <div class="BracketMatchResult-score">0</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--    arrow    -->
-                        <div class="Bracket-arrow"></div>
-                    </div>
-
-                    <!--    group    -->
-                    <div class="Bracket-group">
-                        <!--    match    -->
-                        <div class="Bracket-match">
-                            <div class="Bracket-summary">
-                                <div class="BracketMatch-unit">
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="BracketMatch-play">
-                                    <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
-                                </div>
-                            </div>
-                            <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
-                                <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
-                                        <div class="BracketMatchResult">
-                                            <div class="BracketMatchResult-score">0</div>
-                                            <div class="BracketMatchResult-map">Nom de Map</div>
-                                            <div class="BracketMatchResult-score">0</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--    match    -->
-                        <div class="Bracket-match">
-                            <div class="Bracket-summary">
-                                <div class="BracketMatch-unit">
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                    <!--    equipe infos    -->
-                                    <div class="BracketUnit">
-                                        <div class="BracketUnit-flag"></div>
-                                        <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
-                                        </div>
-                                        <div class="BracketUnit-score">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="BracketMatch-play">
-                                    <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
-                                </div>
-                            </div>
-                            <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
-                                <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
+                                    <div class="BracketMatchReport-list score_match2" style="display: none;">
                                         <div class="BracketMatchResult">
                                             <div class="BracketMatchResult-score">0</div>
                                             <div class="BracketMatchResult-map">Nom de Map</div>
@@ -224,9 +139,9 @@
                                 </div>
                             </div>
                             <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
+                                <div class="BracketMatch-detailsTrigger match3">Match Details</div>
                                 <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
+                                    <div class="BracketMatchReport-list score_match3" style="display: none;">
                                         <div class="BracketMatchResult">
                                             <div class="BracketMatchResult-score">0</div>
                                             <div class="BracketMatchResult-map">Nom de Map</div>
@@ -266,9 +181,9 @@
                                 </div>
                             </div>
                             <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
+                                <div class="BracketMatch-detailsTrigger match4">Match Details</div>
                                 <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
+                                    <div class="BracketMatchReport-list score_match4" style="display: none;">
                                         <div class="BracketMatchResult">
                                             <div class="BracketMatchResult-score">0</div>
                                             <div class="BracketMatchResult-map">Nom de Map</div>
@@ -314,9 +229,9 @@
                                 </div>
                             </div>
                             <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
+                                <div class="BracketMatch-detailsTrigger match5">Match Details</div>
                                 <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
+                                    <div class="BracketMatchReport-list score_match5" style="display: none;">
                                         <div class="BracketMatchResult">
                                             <div class="BracketMatchResult-score">0</div>
                                             <div class="BracketMatchResult-map">Nom de Map</div>
@@ -356,9 +271,99 @@
                                 </div>
                             </div>
                             <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
+                                <div class="BracketMatch-detailsTrigger match6">Match Details</div>
                                 <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
+                                    <div class="BracketMatchReport-list score_match6" style="display: none;">
+                                        <div class="BracketMatchResult">
+                                            <div class="BracketMatchResult-score">0</div>
+                                            <div class="BracketMatchResult-map">Nom de Map</div>
+                                            <div class="BracketMatchResult-score">0</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--    arrow    -->
+                        <div class="Bracket-arrow"></div>
+                    </div>
+
+                    <!--    group    -->
+                    <div class="Bracket-group">
+                        <!--    match    -->
+                        <div class="Bracket-match">
+                            <div class="Bracket-summary">
+                                <div class="BracketMatch-unit">
+                                    <!--    equipe infos    -->
+                                    <div class="BracketUnit">
+                                        <div class="BracketUnit-flag"></div>
+                                        <div class="BracketUnit-clickable">
+                                            <div class="BracketUnit-country">Nom du pays</div>
+                                        </div>
+                                        <div class="BracketUnit-score">
+                                            <span>0</span>
+                                        </div>
+                                    </div>
+                                    <!--    equipe infos    -->
+                                    <div class="BracketUnit">
+                                        <div class="BracketUnit-flag"></div>
+                                        <div class="BracketUnit-clickable">
+                                            <div class="BracketUnit-country">Nom du pays</div>
+                                        </div>
+                                        <div class="BracketUnit-score">
+                                            <span>0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="BracketMatch-play">
+                                    <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
+                                </div>
+                            </div>
+                            <div class="Bracket-details">
+                                <div class="BracketMatch-detailsTrigger match7">Match Details</div>
+                                <div class="BracketMatchReport">
+                                    <div class="BracketMatchReport-list score_match7" style="display: none;">
+                                        <div class="BracketMatchResult">
+                                            <div class="BracketMatchResult-score">0</div>
+                                            <div class="BracketMatchResult-map">Nom de Map</div>
+                                            <div class="BracketMatchResult-score">0</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--    match    -->
+                        <div class="Bracket-match">
+                            <div class="Bracket-summary">
+                                <div class="BracketMatch-unit">
+                                    <!--    equipe infos    -->
+                                    <div class="BracketUnit">
+                                        <div class="BracketUnit-flag"></div>
+                                        <div class="BracketUnit-clickable">
+                                            <div class="BracketUnit-country">Nom du pays</div>
+                                        </div>
+                                        <div class="BracketUnit-score">
+                                            <span>0</span>
+                                        </div>
+                                    </div>
+                                    <!--    equipe infos    -->
+                                    <div class="BracketUnit">
+                                        <div class="BracketUnit-flag"></div>
+                                        <div class="BracketUnit-clickable">
+                                            <div class="BracketUnit-country">Nom du pays</div>
+                                        </div>
+                                        <div class="BracketUnit-score">
+                                            <span>0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="BracketMatch-play">
+                                    <div class="BracketMatch-playIcon glyphicon glyphicon-facetime-video"></div>
+                                </div>
+                            </div>
+                            <div class="Bracket-details">
+                                <div class="BracketMatch-detailsTrigger match8">Match Details</div>
+                                <div class="BracketMatchReport">
+                                    <div class="BracketMatchReport-list score_match8" style="display: none;">
                                         <div class="BracketMatchResult">
                                             <div class="BracketMatchResult-score">0</div>
                                             <div class="BracketMatchResult-map">Nom de Map</div>
@@ -412,9 +417,9 @@
                                 </div>
                             </div>
                             <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
+                                <div class="BracketMatch-detailsTrigger match9">Match Details</div>
                                 <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
+                                    <div class="BracketMatchReport-list score_match9" style="display: none;">
                                         <div class="BracketMatchResult">
                                             <div class="BracketMatchResult-score">0</div>
                                             <div class="BracketMatchResult-map">Nom de Map</div>
@@ -454,9 +459,9 @@
                                 </div>
                             </div>
                             <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
+                                <div class="BracketMatch-detailsTrigger match10">Match Details</div>
                                 <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
+                                    <div class="BracketMatchReport-list score_match10" style="display: none;">
                                         <div class="BracketMatchResult">
                                             <div class="BracketMatchResult-score">0</div>
                                             <div class="BracketMatchResult-map">Nom de Map</div>
@@ -502,9 +507,9 @@
                                 </div>
                             </div>
                             <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
+                                <div class="BracketMatch-detailsTrigger match11">Match Details</div>
                                 <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
+                                    <div class="BracketMatchReport-list score_match11" style="display: none;">
                                         <div class="BracketMatchResult">
                                             <div class="BracketMatchResult-score">0</div>
                                             <div class="BracketMatchResult-map">Nom de Map</div>
@@ -544,9 +549,9 @@
                                 </div>
                             </div>
                             <div class="Bracket-details">
-                                <div class="BracketMatch-detailsTrigger">Match Details</div>
+                                <div class="BracketMatch-detailsTrigger match12">Match Details</div>
                                 <div class="BracketMatchReport">
-                                    <div class="BracketMatchReport-list">
+                                    <div class="BracketMatchReport-list score_match12" style="display: none;">
                                         <div class="BracketMatchResult">
                                             <div class="BracketMatchResult-score">0</div>
                                             <div class="BracketMatchResult-map">Nom de Map</div>
@@ -601,9 +606,9 @@
                             </div>
                         </div>
                         <div class="Bracket-details">
-                            <div class="BracketMatch-detailsTrigger">Match Details</div>
+                            <div class="BracketMatch-detailsTrigger match13">Match Details</div>
                             <div class="BracketMatchReport">
-                                <div class="BracketMatchReport-list">
+                                <div class="BracketMatchReport-list score_match13" style="display: none;">
                                     <div class="BracketMatchResult">
                                         <div class="BracketMatchResult-score">0</div>
                                         <div class="BracketMatchResult-map">Nom de Map</div>
@@ -643,9 +648,9 @@
                             </div>
                         </div>
                         <div class="Bracket-details">
-                            <div class="BracketMatch-detailsTrigger">Match Details</div>
+                            <div class="BracketMatch-detailsTrigger match14">Match Details</div>
                             <div class="BracketMatchReport">
-                                <div class="BracketMatchReport-list">
+                                <div class="BracketMatchReport-list score_match14" style="display: none;">
                                     <div class="BracketMatchResult">
                                         <div class="BracketMatchResult-score">0</div>
                                         <div class="BracketMatchResult-map">Nom de Map</div>
@@ -698,9 +703,9 @@
                             </div>
                         </div>
                         <div class="Bracket-details">
-                            <div class="BracketMatch-detailsTrigger">Match Details</div>
+                            <div class="BracketMatch-detailsTrigger match15">Match Details</div>
                             <div class="BracketMatchReport">
-                                <div class="BracketMatchReport-list">
+                                <div class="BracketMatchReport-list score_match15" style="display: none;">
                                     <div class="BracketMatchResult">
                                         <div class="BracketMatchResult-score">0</div>
                                         <div class="BracketMatchResult-map">Nom de Map</div>
