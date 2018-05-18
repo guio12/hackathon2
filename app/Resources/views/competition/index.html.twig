@@ -5,6 +5,7 @@
 <script src="../js/tournoi.js"></script>
 {% endblock %}
 
+
 {% block body %}
     <div class="content">
         <h2>COMPETITION</h2>
@@ -136,7 +137,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                            <!-- Fin Modal EQUIPE 1-->
+                                            <!-- Fin Modal EQUIPE 2-->
 
 
                                     <div class="BracketMatch-play">
@@ -187,7 +188,7 @@
                                         <div class="BracketUnit">
                                             <div class="BracketUnit-flag">{% if matchs[k].team1!="" %}<img src="{{ matchs[k].team1.flagUrl }}"> </img>{% endif %}</div>
                                             <div class="BracketUnit-clickable button">
-                                                <div class="BracketUnit-country"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#team1{{ k }}">{% if matchs[k].team1!="" %}{{ matchs[k].team1.nationality }}{% endif %}</a></div>
+                                                <div class="BracketUnit-country"><a href="#" class="btn" data-toggle="modal" data-target="#team1{{ k }}">{% if matchs[k].team1!="" %}{{ matchs[k].team1.nationality }}{% endif %}</a></div>
                                             </div>
                                             <div class="BracketUnit-score">
                                                 <span>{{ matchs[k].score1 }}</span>
@@ -197,7 +198,7 @@
                                         <div class="BracketUnit">
                                             <div class="BracketUnit-flag">{% if matchs[k].team2!="" %}<img src="{{ matchs[k].team2.flagUrl }}"> </img>{% endif %}</div>
                                             <div class="BracketUnit-clickable button">
-                                                <div class="BracketUnit-country"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#team2{{ k }}">{% if matchs[k].team2!="" %}{{ matchs[k].team2.nationality }}{% endif %}</a></div>
+                                                <div class="BracketUnit-country"><a href="#" class="btn" data-toggle="modal" data-target="#team2{{ k }}">{% if matchs[k].team2!="" %}{{ matchs[k].team2.nationality }}{% endif %}</a></div>
                                             </div>
                                             <div class="BracketUnit-score">
                                                 <span>{{ matchs[k].score2 }}</span>
@@ -343,7 +344,7 @@
                                         <div class="BracketUnit">
                                             <div class="BracketUnit-flag">{% if matchs[k].team1!="" %}<img src="{{ matchs[k].team1.flagUrl }}"> </img>{% endif %}</div>
                                             <div class="BracketUnit-clickable button">
-                                                <div class="BracketUnit-country"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#team1{{ k }}">{% if matchs[k].team1!="" %}{{ matchs[k].team1.nationality }}{% endif %}</a></div>
+                                                <div class="BracketUnit-country"><a href="#" class="btn" data-toggle="modal" data-target="#team1{{ k }}">{% if matchs[k].team1!="" %}{{ matchs[k].team1.nationality }}{% endif %}</a></div>
                                             </div>
                                             <div class="BracketUnit-score">
                                                 <span>{{ matchs[k].score1 }}</span>
@@ -353,7 +354,7 @@
                                         <div class="BracketUnit">
                                             <div class="BracketUnit-flag">{% if matchs[k].team2!="" %}<img src="{{ matchs[k].team2.flagUrl }}"> </img>{% endif %}</div>
                                             <div class="BracketUnit-clickable button">
-                                                <div class="BracketUnit-country"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#team2{{ k }}">{% if matchs[k].team2!="" %}{{ matchs[k].team2.nationality }}{% endif %}</a></div>
+                                                <div class="BracketUnit-country"><a href="#" class="btn" data-toggle="modal" data-target="#team2{{ k }}">{% if matchs[k].team2!="" %}{{ matchs[k].team2.nationality }}{% endif %}</a></div>
                                             </div>
                                             <div class="BracketUnit-score">
                                                 <span>{{ matchs[k].score2 }}</span>
@@ -516,6 +517,7 @@
 
                         </div>
                         <!-- Modal EQUIPE 1 -->
+                        <div class="container modalPlan">
                         {% if matchs[k].team1!="" %}
                             <div class="modal fade" id="team1{{ k }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -561,7 +563,9 @@
                                 </div>
                             </div>
                         {% endif %}
+                        </div>
                         <!-- Modal EQUIPE 2 -->
+                        <div class="container modalPlan">
                         {% if matchs[k].team2!="" %}
                             <div class="modal fade" id="team2{{ k }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -611,6 +615,7 @@
 
                             </div>
                         {% endif %}
+                        </div>
 
                         <div class="Bracket-details">
                             <div class="BracketMatch-detailsTrigger match{{ k+1 }}">Match Details</div>
@@ -637,4 +642,6 @@
 {% endblock %}
 
 {% block stylesheets %}
+
+
 {% endblock %}
