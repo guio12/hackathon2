@@ -22,8 +22,85 @@
                                     <div class="BracketUnit">
                                         <div class="BracketUnit-flag"></div>
                                         <div class="BracketUnit-clickable">
-                                            <div class="BracketUnit-country">Nom du pays</div>
+                                            <!--Bouton Modal EQUIPE 1 -->
+                                            <div class="button">
+                                                <div class="BracketUnit-country"><img src="{{ team.flag_url }}" class="beforeModalFlag"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#team1">{{ team.nationality }}</a></div>
+                                            </div>
                                         </div>
+
+                                        <!-- Modal EQUIPE 1 -->
+                                        <div class="modal fade" id="team1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+
+                                                        <h2 class="inModalTitle"><img src="{{ team.flag_url }}" class="inModalFlag">{{ team.nationality }}</h2>
+                                                        <div class="container">
+                                                            <div class="row" id="blockJoueur1">
+                                                                <div class="inModalPlayerContainer">
+                                                                    <div class="inModalBlockPlayerPhoto">
+                                                                        <p><img src="{{ player.photo_url }}"></p>
+                                                                    </div>
+                                                                        <h3>{{ player.pseudo }}</h3>
+                                                                        <h5>{{ player.role }}</h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row" id="blockJoueur2">
+                                                                <div class="inModalPlayerContainer">
+                                                                        <div class="inModalBlockPlayerPhoto">
+                                                                            <p><img src="{{ player.photo_url }}"></p>
+                                                                        </div>
+                                                                        <h3>{{ player.pseudo }}</h3>
+                                                                        <h5>{{ player.role }}</h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row" id="blockJoueur3">
+                                                                <div class="inModalPlayerContainer">
+                                                                    <div class="inModalBlockPlayerPhoto">
+                                                                        <p><img src="{{ player.photo_url }}"></p>
+                                                                    </div>
+                                                                    <h3>{{ player.pseudo }}</h3>
+                                                                    <h5>{{ player.role }}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="container">
+                                                            <div class="row" id="blockJoueur4">
+                                                                <div class="inModalPlayerContainer">
+                                                                    <div class="inModalBlockPlayerPhoto">
+                                                                        <p><img src="{{ player.photo_url }}"></p>
+                                                                    </div>
+                                                                    <h3>{{ player.pseudo }}</h3>
+                                                                    <h5>{{ player.role }}</h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row" id="blockJoueur5">
+                                                                <div class="inModalPlayerContainer">
+                                                                    <div class="inModalBlockPlayerPhoto">
+                                                                        <p><img src="{{ player.photo_url }}"></p>
+                                                                    </div>
+                                                                    <h3>{{ player.pseudo }}</h3>
+                                                                    <h5>{{ player.role }}</h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row" id="blockJoueur6">
+                                                                <div class="inModalPlayerContainer">
+                                                                    <div class="inModalBlockPlayerPhoto">
+                                                                        <p><img src="{{ player.photo_url }}"></p>
+                                                                    </div>
+                                                                    <h3>{{ player.pseudo }}</h3>
+                                                                    <h5>{{ player.role }}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                                    </div>
+                                                </div>
+                                        <!-- Fin Modal EQUIPE 1-->
+
                                         <div class="BracketUnit-score">
                                             <span>0</span>
                                         </div>
