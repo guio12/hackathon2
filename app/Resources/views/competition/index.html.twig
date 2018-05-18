@@ -30,7 +30,7 @@
                                             <div class="BracketUnit">
                                                 <div class="BracketUnit-flag">{% if matchs[k].team1!="" %}<img src="{{ matchs[k].team1.flagUrl }}"> </img>{% endif %}</div>
                                                 <div class="BracketUnit-clickable button">
-                                                    <div class="BracketUnit-country"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#team1{{ k }}">{% if matchs[k].team1!="" %}{{ matchs[k].team1.nationality }}{% endif %}</a></div>
+                                                    <div class="BracketUnit-country"><a href="#" class="btn" data-toggle="modal" data-target="#team1{{ k }}">{% if matchs[k].team1!="" %}{{ matchs[k].team1.nationality }}{% endif %}</a></div>
                                                 </div>
                                                 <div class="BracketUnit-score">
                                                     <span>{{ matchs[k].score1 }}</span>
@@ -40,7 +40,7 @@
                                             <div class="BracketUnit">
                                                 <div class="BracketUnit-flag">{% if matchs[k].team2!="" %}<img src="{{ matchs[k].team2.flagUrl }}"> </img>{% endif %}</div>
                                                 <div class="BracketUnit-clickable button">
-                                                    <div class="BracketUnit-country"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#team2{{ k }}">{% if matchs[k].team2!="" %}{{ matchs[k].team2.nationality }}{% endif %}</a></div>
+                                                    <div class="BracketUnit-country"><a href="#" class="btn" data-toggle="modal" data-target="#team2{{ k }}">{% if matchs[k].team2!="" %}{{ matchs[k].team2.nationality }}{% endif %}</a></div>
                                                 </div>
                                                 <div class="BracketUnit-score">
                                                     <span>{{ matchs[k].score2 }}</span>
