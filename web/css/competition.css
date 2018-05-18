@@ -143,6 +143,11 @@
 
 }
 
+.BracketUnit-country a
+{
+    color: white;
+}
+
 .BracketUnit-info {
 
     height: 18px;
